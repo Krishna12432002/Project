@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Image, Button } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
@@ -42,10 +43,38 @@ const AssignmentScreen = () => {
     } catch (err) {
       console.error('Error picking document:', err);
     }
+=======
+import React, { useState, useRef } from 'react';
+import { View, Text, TouchableOpacity, Button } from 'react-native';
+
+const AssignmentScreen = () => {
+  const fileInputRef = useRef(null);
+  const [showUploadButtons, setShowUploadButtons] = useState(false);
+
+  const handleSelectFile = () => {
+    // Trigger the file input programmatically
+    fileInputRef.current.click();
+  };
+
+  const handleUploadFile = (event) => {
+    // Implement file upload logic here
+    const selectedFile = event.target.files[0];
+    console.log('File selected:', selectedFile.name);
+  };
+
+  const handleViewPostedAssignment = () => {
+    // Implement logic to view posted assignments
+    console.log('View posted assignments');
+  };
+
+  const handleUploadAssignmentPress = () => {
+    setShowUploadButtons(!showUploadButtons);
+>>>>>>> 0bc82be3bfde2b11ea7e720b881c9f40884d757c
   };
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+<<<<<<< HEAD
       <View style={{ flexDirection: 'column', alignItems: 'center', width: '100%' }}>
         <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>
           Faculty Uploaded Files
@@ -82,8 +111,58 @@ const AssignmentScreen = () => {
         <Button title="Select Assignment File" onPress={handleUploadAssignment} />
         <Button title="Upload Assignment" onPress={() => { /* Implement upload logic */ }} />
       </View>
+=======
+      <TouchableOpacity
+        style={{
+          marginBottom: 20,
+          padding: 10,
+          backgroundColor: 'blue',
+          borderRadius: 5,
+        }}
+        onPress={handleUploadAssignmentPress}
+      >
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+          Upload Assignment
+        </Text>
+      </TouchableOpacity>
+
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        onChange={handleUploadFile}
+      />
+
+      {showUploadButtons && (
+        <View style={{ marginBottom: 20 }}>
+          <Button title="Select File" onPress={handleSelectFile} />
+          {/* Upload button removed, as it is handled by the file input */}
+        </View>
+      )}
+
+      <TouchableOpacity
+        style={{
+          marginBottom: 20,
+          padding: 10,
+          backgroundColor: 'green',
+          borderRadius: 5,
+        }}
+        onPress={handleViewPostedAssignment}
+      >
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+          Posted Assignments
+        </Text>
+      </TouchableOpacity>
+
+      {/* Add the content for the "Posted Assignments" section */}
+      {/* For example, you can include the logic to view posted assignments here */}
+>>>>>>> 0bc82be3bfde2b11ea7e720b881c9f40884d757c
     </View>
   );
 };
 
+<<<<<<< HEAD
 export default AssignmentScreen;
+=======
+export default AssignmentScreen;
+>>>>>>> 0bc82be3bfde2b11ea7e720b881c9f40884d757c

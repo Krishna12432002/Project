@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Button, StyleSheet } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
@@ -92,3 +93,19 @@ const styles = StyleSheet.create({
 });
 
 export default AssignmentScreen;
+=======
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+
+const TestScreen = () => {
+  return (
+    <View>
+      <Text>TestScreen</Text>
+    </View>
+  )
+}
+
+export default TestScreen
+
+const styles = StyleSheet.create({})
+>>>>>>> 0bc82be3bfde2b11ea7e720b881c9f40884d757c

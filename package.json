@@ -15,6 +15,10 @@
     "expo": "~49.0.15",
     "expo-document-picker": "~11.5.4",
     "expo-status-bar": "~1.6.0",
+<<<<<<< HEAD
+=======
+    "firebase": "^10.7.2",
+>>>>>>> 0bc82be3bfde2b11ea7e720b881c9f40884d757c
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.6",

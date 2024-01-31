@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Button, Linking } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 
 const AssignmentScreen = () => {
@@ -18,6 +18,13 @@ const AssignmentScreen = () => {
       }
     } catch (err) {
       console.error('Error picking document', err);
+    }
+  };
+
+  const handleOpenFile = () => {
+    // Open the selected file using Linking API
+    if (selectedFile && selectedFile.uri) {
+      Linking.openURL(selectedFile.uri);
     }
   };
 
@@ -59,6 +66,21 @@ const AssignmentScreen = () => {
       {showUploadButtons && (
         <View style={{ marginBottom: 20 }}>
           <Button title="Select File" onPress={handleSelectFile} />
+          {selectedFile && (
+            <TouchableOpacity
+              style={{
+                marginTop: 10,
+                padding: 10,
+                backgroundColor: 'gray',
+                borderRadius: 5,
+              }}
+              onPress={handleOpenFile}
+            >
+              <Text style={{ fontSize: 16, color: 'white' }}>
+                Open File: {selectedFile.name}
+              </Text>
+            </TouchableOpacity>
+          )}
           <Button title="Upload File" onPress={handleUploadFile} />
         </View>
       )}
@@ -76,9 +98,6 @@ const AssignmentScreen = () => {
           Posted Assignments
         </Text>
       </TouchableOpacity>
-
-      {/* Add the content for the "Posted Assignments" section */}
-      {/* For example, you can include the logic to view posted assignments here */}
     </View>
   );
 };
